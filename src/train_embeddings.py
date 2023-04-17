@@ -353,8 +353,10 @@ class OnlineTripletMining(nn.Module):
       labels: subject labels
     """
 
-    # Get the pairwise distance matrix, shape (batch_size, batch_size)
-    pairwise_dist = 1 - F.cosine_similarity(embeddings.unsqueeze(1), embeddings.unsqueeze(0), dim=2)
+    # Get the pairwise similarity matrix, shape (batch_size, batch_size), range [-1, 1] (1 being the same angle)
+    pairwise_sim = F.cosine_similarity(embeddings.unsqueeze(1), embeddings.unsqueeze(0), dim=2)
+    # Convert similarity to a distance metric, shape (batch_size, batch_size), range [0, 2]
+    pairwise_dist = 1 - pairwise_sim
 
     # Create label masks, shape (batch_size, batch_size)
     indices_equal = torch.eye(labels.size(0)).bool().to(self.device)
@@ -369,9 +371,9 @@ class OnlineTripletMining(nn.Module):
     ap_dist = torch.where(ap_mask, pairwise_dist, torch.tensor(0, dtype=pairwise_dist.dtype).to(self.device))
     ap_dist_hard = torch.max(ap_dist, dim=1, keepdim=True)[0]
 
-    # Anchor-negative distances, with invalid an pairs having a distance of 1
+    # Anchor-negative distances, with invalid an pairs having a distance of maxsize
     # Choose hardest negatives as min distance for each anchor, shape (batch_size, 1)
-    an_dist = torch.where(an_mask, pairwise_dist, torch.tensor(1, dtype=pairwise_dist.dtype).to(self.device))
+    an_dist = torch.where(an_mask, pairwise_dist, torch.tensor(sys.maxsize, dtype=pairwise_dist.dtype).to(self.device))
     an_dist_hard = torch.min(an_dist, dim=1, keepdim=True)[0]
 
     # Compute triplet margin loss, clamping minimum distance to 0, averaged over the batch
@@ -538,11 +540,11 @@ class CatEmbeddingTrainer:
     eval_embd[0] = torch.cat(eval_embd[0], dim=0)
     eval_embd[1] = torch.cat(eval_embd[1], dim=0)
 
-    # Compute pairwise cosine similiary distances between train db and eval embeddings, shape (train_size, eval_size)
-    pairwise_dist = 1 - F.cosine_similarity(self.train_embd_db[0].unsqueeze(1), eval_embd[0].unsqueeze(0), dim=2)
+    # Compute pairwise cosine similiary between train db and eval embeddings, shape (train_size, eval_size)
+    pairwise_sim = F.cosine_similarity(self.train_embd_db[0].unsqueeze(1), eval_embd[0].unsqueeze(0), dim=2)
 
     # Get indices of top 100 nearest neighbors, shape (eval_size, 100)
-    _, indices = torch.topk(pairwise_dist, k=100, dim=1)
+    _, indices = torch.topk(pairwise_sim, k=100, dim=1)
     indices = indices.to(self.params.device)
 
     # Evaluate retrieval

@@ -16,6 +16,7 @@ import torch.nn.functional as F
 from torchvision import transforms
 from PIL import Image
 import cv2
+import numpy as np
 
 from train_embeddings import CatFaceDataset, CatEmbedNN
 
@@ -57,7 +58,7 @@ def locate_face(image, face_cascade):
   # Convert PIL image to opencv BGR image
   cv2_image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)  
   # Detect cat faces in the image
-  faces = face_cascade.detectMultiScale(cv2_image, scaleFactor=1.3, minNeighbors=5, minSize=(30, 30))
+  faces = face_cascade.detectMultiScale(cv2_image, scaleFactor=1.1, minNeighbors=4, minSize=(30, 30))
   # Return bounding box, if found
   if len(faces) == 0:
     # No cat face detected
@@ -65,11 +66,19 @@ def locate_face(image, face_cascade):
   else:
     # Extract the coordinates of the first detected cat face
     (x, y, w, h) = faces[0]
-    return BoxCoords(x, y, x+w, y+h)
+    # Add a buffer to the top and sides to estimate the ears
+    buf_top = 0.3*h
+    buf_sides = 0.15*w
+    # Compute new coords
+    xmin = max(0, x-buf_sides)
+    ymin = max(0, y-buf_top)
+    xmax = min(image.size[0], x+w+buf_sides)
+    ymax = min(image.size[1], y+h)
+    return BoxCoords(xmin, ymin, xmax, ymax)
 
 def get_default_bbox(image):
   """
-  Get default bounding box as a centered square that fills the shortest side of the image.
+  Get default bounding box as a centered square 3/4 the length of the shortest side.
   
   Args:
     image (PIL Image): input image
@@ -80,7 +89,8 @@ def get_default_bbox(image):
   # Get image size
   width, height = image.size  
   # Determine the side length of the square
-  side_length = min(width, height)  
+  side_length = min(width, height)
+  side_length *= 0.75
   # Calculate left, top, right, and bottom coordinates of the bounding box
   xmin = (width - side_length) // 2
   ymin = (height - side_length) // 2
@@ -92,7 +102,7 @@ def get_default_bbox(image):
 def match_k(query, embeddings, subjects, k=10, device="cpu"):
   """
   Find the top-k matches for the query embedding.
-  Uses nearest-neighbor classification with cosine similarity distance.
+  Uses nearest-neighbor classification with cosine similarity.
   
   Args:
     query: query embedding, tensor with shape (1, n_features)
@@ -104,12 +114,16 @@ def match_k(query, embeddings, subjects, k=10, device="cpu"):
     A list of the top-k subject ids  
   """
   
-  # Compute pairwise cosine similiary distances between query and db embeddings, shape (1, db_size)
-  pairwise_dist = 1 - F.cosine_similarity(query.unsqueeze(1), embeddings.unsqueeze(0), dim=2)
+  # Compute pairwise cosine similiary scores between query and db embeddings, shape (1, db_size)
+  pairwise_sim = F.cosine_similarity(query.unsqueeze(1), embeddings.unsqueeze(0), dim=2)
   
   # Get indices of top k nearest neighbors, shape (1, k)
-  _, indices = torch.topk(pairwise_dist, k=k, dim=1)
+  _, indices = torch.topk(pairwise_sim, k=k, dim=1)
   indices = indices.to(device)
+  
+  # Get top-k subject ids
+  top_k = [subjects[i] for i in indices.view([-1])]
+  return top_k
 
 
 
@@ -123,7 +137,7 @@ def main(argv):
   Main function.
   Interactive command-line program for identifying cat faces.
   
-  Example usage: python identify_cats.py "./out_11/checkpoint.pth" "./data/db/train_out_11.pth" --k 10 
+  Example usage: python identify_cats.py "./out_1/out_11/checkpoint.pth" "./data/db/train_out_11.pth" --k 10 
   """
   
   # handle any command line arguments
@@ -168,14 +182,16 @@ def main(argv):
       continue
     # Open the image using PIL
     try:
-      image = Image.open(file_path)
+      image = Image.open(fp)
     except:
       print(f"Image file path {fp} could not be opened... please try again!")
       continue
     # Try to identify cat face bounding box
     bbox = locate_face(image, face_cascade)
     if not bbox:
+      print("* Warning: no cat face detected, attempting retrieval anyways...")
       bbox = get_default_bbox(image)
+    print(f"Estimating face location at: {vars(bbox)}")
     # Apply pre-processing (CatFaceDataset.resize_with_padding --> toTensor --> add batch dimension)
     processed_img = to_tensor(CatFaceDataset.resize_with_padding(image, bbox)).to(device).unsqueeze(0)
     # Pass processed image to model to get embedding --> query
@@ -184,7 +200,7 @@ def main(argv):
     top_subj = match_k(query, embeddings, subjects, k=args.k, device=device)
     # Output results
     print("-"*25)
-    print(f"Query: {fp}")
+    print(f"| Query: {fp}")
     for i, subj in enumerate(top_subj):
       print(f"|  {i+1}:  {subj}")
     print("-"*25)
