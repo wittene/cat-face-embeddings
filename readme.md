@@ -11,11 +11,13 @@ This project implements a learned cat face embedding model, with an interactive 
   - **src/data_processing** contains source code related to generating the train/valid/test sets
   - **src/embeddings** contains source code for the learned embedding model and embedding database generation
 
-## Setup
-1. Clone this repository.
-2. In the repository directory, create and activate a virtual environment for this project.
-
 ## How to run
+
+> Tip: Running any script with the -h flag will output a usage message.
+
+### Setup
+- Clone this repository.
+- In the repository directory, create and activate a virtual environment for this project.
 
 ### Dataset Generation
 - The image data should be organized to be parsed into a `torchvision.datasets.ImageFolder`.
@@ -30,8 +32,11 @@ This project implements a learned cat face embedding model, with an interactive 
   data_root
   |- orig_split
   |--- test
+  |----- [subject folders]
   |--- train
+  |----- [subject folders]
   |--- valid
+  |----- [subject folders]
   |--- orig_labels.csv
   |- augmented
   |--- [subject folders]
