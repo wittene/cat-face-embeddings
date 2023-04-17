@@ -25,6 +25,9 @@ This project implements a learned cat face embedding model, with an interactive 
 - Install required packages listed in `requirements.txt`
 
 ### Dataset Generation
+
+> Due to size contraints, the dataset of images used to train the provided model is not made available on GitHub, and instead can be shared upon request.
+
 - The image data should be organized to be parsed into a `torchvision.datasets.ImageFolder`.
   - The root data directory should contain subfolders.
   - Each subfolder should only contain images with one cat subject, and the subfolder should be named with the subject id assigned to the cat pictured.
