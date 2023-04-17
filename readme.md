@@ -13,11 +13,12 @@ This project implements a learned cat face embedding model, with an interactive 
 
 ## How to run
 
-> Tip: Running any script with the -h flag will output a usage message.
+> Tip: Running any script with the -h flag will output a descriptive usage message.
 
 ### Setup
 - Clone this repository.
 - In the repository directory, create and activate a virtual environment for this project.
+- Install required packages listed in `requirements.txt`
 
 ### Dataset Generation
 - The image data should be organized to be parsed into a `torchvision.datasets.ImageFolder`.
