@@ -7,13 +7,17 @@ This project implements a learned cat face embedding model, with an interactive 
 ---
 
 ## Repository Organization
+- **db** contains the database file(s)
+- **scripts** contains shell scripts for running the embedding and identification programs
+  - *Note: shell scripts are currently written relative to the project root, not the scripts folder*
 - **src** contains the source code for this project
   - **src/data_processing** contains source code related to generating the train/valid/test sets
   - **src/embeddings** contains source code for the learned embedding model and embedding database generation
+- **trained_model** contains the trained model checkpoint and supporting documents
 
 ## How to run
 
-> Tip: Running any script with the -h flag will output a descriptive usage message.
+> Tip: Running any python script with the -h flag will output a descriptive usage message.
 
 ### Setup
 - Clone this repository.
