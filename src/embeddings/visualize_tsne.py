@@ -40,7 +40,7 @@ def visualize_tsne(db, save_path, image_dir=None, annotation_scale=0.01):
   subjects = db["subjects"]
 
   # Perform t-SNE to get 2D space
-  tsne = TSNE(n_components=2)
+  tsne = TSNE(n_components=2, learning_rate="auto", metric="cosine", init="pca", random_state=42)
   X_tsne = tsne.fit_transform(embeddings)
 
   # Plot t-SNE embeddings
