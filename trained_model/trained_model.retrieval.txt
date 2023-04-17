@@ -1,0 +1,241 @@
+Starting...
+Using device cuda
+Loading checkpoint...
+Initializing embedding model...
+Loading database...
+Ready!
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 206.55, 'ymin': 15.100000000000001, 'xmax': 392.45, 'ymax': 201}
+-------------------------
+| Query: ./data/split/test/14e6c67d-3250-4c8d-bb66-5b8809e1ff36/00000144_010.jpg
+|  1:  833a7683-93f8-4ea0-b53a-9f6722909c90
+|  2:  44565ecb-1f3e-423b-9688-b1478686c18f
+|  3:  4043b3e7-c610-46e4-8c26-47ce34b52537
+|  4:  82092c7b-204c-440e-9f16-acb1302f55e0
+|  5:  ec68d3a8-d8ac-11ed-afa1-0242ac120002
+|  6:  8ac449ad-0151-4e12-9781-f9cca7bd95d7
+|  7:  af75744a-db95-423f-88e4-d8c125752436
+|  8:  833a7683-93f8-4ea0-b53a-9f6722909c90
+|  9:  c8f02a9b-0854-40e2-953e-082e04d060fd
+|  10:  3c3bd003-bfa1-44e4-a432-56445a201040
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 255.0, 'ymin': 85.0, 'xmax': 767.25, 'ymax': 597.25}
+-------------------------
+| Query: ./data/split/test/1c77ab7a-6b09-444a-be73-7672df934f07/00000193_005.jpg
+|  1:  0ea62894-b8e1-496b-b9c3-e265a6f30b45
+|  2:  541c7564-b89e-4b58-9ab2-ae50ef69614d
+|  3:  9ed36f02-5139-4727-936c-8268c8f6c5fb
+|  4:  efffc33f-a72d-4f45-8834-a4d4a6590918
+|  5:  b1363eee-2e64-411e-888b-bec62790b858
+|  6:  edc7fe77-7701-45c8-9482-36541b242c53
+|  7:  50d7c2b1-df69-4d1f-84ec-1cc63d3ecda0
+|  8:  6e90527d-498b-4524-bcc6-518f0d69f8ee
+|  9:  cea22feb-58fc-4ad6-bcad-545a642ee5bb
+|  10:  4aff173c-b73a-4e4e-a199-de9e00552bed
+-------------------------
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 32.3, 'ymin': 48.6, 'xmax': 107.7, 'ymax': 124}
+-------------------------
+| Query: ./data/split/test/1ec15a83-18ff-49de-a7fa-37b17d3e1f3d/Egyptian_Mau_34.jpg
+|  1:  4e2777cf-3570-46f5-a315-ded484bb412d
+|  2:  0ea62894-b8e1-496b-b9c3-e265a6f30b45
+|  3:  d9209b73-f3c7-4736-963b-dcc8690ee934
+|  4:  ec68d3a8-d8ac-11ed-afa1-0242ac120002
+|  5:  93713121-269b-4a7f-bffe-26b76e5910a9
+|  6:  5703d63c-51fc-4bba-9e87-127d29223638
+|  7:  f79485c7-eeaf-4c98-bdb6-88c5a964af65
+|  8:  48944363-f734-418c-900c-284350a0a9d5
+|  9:  f7d5b5a8-155c-4ad9-ae84-071ec9e5edfe
+|  10:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+-------------------------
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 117.0, 'ymin': 11.0, 'xmax': 377.0, 'ymax': 271}
+-------------------------
+| Query: ./data/split/test/201368f2-5e2d-461c-8d41-a5625008925c/British_Shorthair_197.jpg
+|  1:  2f6441de-2d46-47ad-a096-eca17c438f20
+|  2:  954ec955-3b87-4094-ac6d-151b10ef733e
+|  3:  22a9a651-8855-407c-8a3e-56793526dd33
+|  4:  71bc8ef3-8f8c-4391-887d-d801613a42cf
+|  5:  2f6441de-2d46-47ad-a096-eca17c438f20
+|  6:  71bc8ef3-8f8c-4391-887d-d801613a42cf
+|  7:  44279350-c12b-44e6-8464-5f57fc46d427
+|  8:  6e90527d-498b-4524-bcc6-518f0d69f8ee
+|  9:  b9af10c7-04d6-442a-a6ef-538491421013
+|  10:  6e9220ad-0591-4bc4-9fdc-421051d6bd68
+-------------------------
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 343.75, 'ymin': 52.5, 'xmax': 779.25, 'ymax': 488}
+-------------------------
+| Query: ./data/split/test/2175763a-3b2f-4e1d-9ddc-b08fd470d448/00000320_020.jpg
+|  1:  b256fa12-e663-4372-a40e-433bf7bdab58
+|  2:  3e87c5e3-147f-4b97-a09f-e19d6740de85
+|  3:  60297be3-6a2d-4912-a00d-fc8aebffee7d
+|  4:  82b1b82e-f870-4d3c-9b20-95410271e9bb
+|  5:  5ef4b0c2-234e-4ece-b23d-89e6abfa9a46
+|  6:  7c4c60f-2bc5-4866-af42-a5dbd8d45a2c
+|  7:  6e9220ad-0591-4bc4-9fdc-421051d6bd68
+|  8:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+|  9:  f0aa87c8-f135-4012-a960-d4db28bc6de4
+|  10:  6eafc588-faa2-4c22-8e0e-0b8bed6a0277
+-------------------------
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 138.6, 'ymin': 53.2, 'xmax': 601.4, 'ymax': 516}
+-------------------------
+| Query: ./data/split/test/2ec98de6-0e3d-44a0-88cf-4440abff53c8/00000193_021.jpg
+|  1:  b1363eee-2e64-411e-888b-bec62790b858
+|  2:  ff647ee8-cd6c-48d2-ac5e-b5e31733c7f3
+|  3:  d8402567-9714-497f-9aaa-816c02515fe5
+|  4:  9243a24f-e7a7-44a4-8348-fe635c3ee897
+|  5:  e418273c-95cf-4dc4-b1e4-590a6d116769
+|  6:  2d17f3b4-69eb-4df9-8eb4-bc0d22f5b8b1
+|  7:  72508932-24b8-4937-8f0d-2e1071ca1c61
+|  8:  b9dd7963-1190-4306-9920-0c49b3153c77
+|  9:  c29cc374-dc87-4e75-8fb7-04bb56a7527a
+|  10:  246eae21-b8a5-4a13-8c4c-c6195f3c1151
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 46.0, 'ymin': 109.0, 'xmax': 327.25, 'ymax': 390.25}
+-------------------------
+| Query: ./data/split/test/1560d062-78a0-43f1-9793-b69413ebdab3/Sphynx_33.jpg
+|  1:  ad856304-2676-474e-b6be-3f75b89cf64c
+|  2:  a2f39e51-fdf1-45a2-9045-ccc68b478144
+|  3:  44279350-c12b-44e6-8464-5f57fc46d427
+|  4:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+|  5:  edc7fe77-7701-45c8-9482-36541b242c53
+|  6:  ad856304-2676-474e-b6be-3f75b89cf64c
+|  7:  d4ef59a3-2ba6-49b7-b145-2dbf026b45f2
+|  8:  72508932-24b8-4937-8f0d-2e1071ca1c61
+|  9:  52a5312a-8cc6-4333-9ca8-b1113bc0a3dd
+|  10:  a2f39e51-fdf1-45a2-9045-ccc68b478144
+-------------------------
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 448.25, 'ymin': 205.5, 'xmax': 662.75, 'ymax': 420}
+-------------------------
+| Query: ./data/split/test/72508932-24b8-4937-8f0d-2e1071ca1c61/00000193_002.jpg
+|  1:  82ae0b34-c5bc-48c5-af15-b8435d6d33cb
+|  2:  1518808d-21cf-4d8a-9124-fecb62b1281d
+|  3:  f79485c7-eeaf-4c98-bdb6-88c5a964af65
+|  4:  3c3bd003-bfa1-44e4-a432-56445a201040
+|  5:  3610796d-4fca-4220-b25a-cef73d0631ea
+|  6:  1e9c468c-1d8d-4036-9fde-317dc7c423ac
+|  7:  2ebd4dcb-97e5-4924-baa4-d034db57e816
+|  8:  b9dd7963-1190-4306-9920-0c49b3153c77
+|  9:  246eae21-b8a5-4a13-8c4c-c6195f3c1151
+|  10:  ec68d3a8-d8ac-11ed-afa1-0242ac120002
+-------------------------
+
+Enter image file path (or 'q' to quit): Estimating face location at: {'xmin': 88.1, 'ymin': 0, 'xmax': 329.9, 'ymax': 199}
+-------------------------
+| Query: ./data/split/test/d6d43594-ac20-476b-a206-a6ef1bd48216/00000346_000.jpg
+|  1:  4d6f2013-273e-44cd-83ce-5798d9a79c2d
+|  2:  82b1b82e-f870-4d3c-9b20-95410271e9bb
+|  3:  37641d32-67a4-47a2-b4eb-87e69b5e0a0e
+|  4:  07679da4-6501-4ea6-9481-a20bc4f085d2
+|  5:  2175763a-3b2f-4e1d-9ddc-b08fd470d448
+|  6:  37641d32-67a4-47a2-b4eb-87e69b5e0a0e
+|  7:  2175763a-3b2f-4e1d-9ddc-b08fd470d448
+|  8:  e418273c-95cf-4dc4-b1e4-590a6d116769
+|  9:  195622a8-9919-4d0a-bce8-381afcc53975
+|  10:  247cf8a8-2113-4a54-b116-5fb419011e79
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 70.0, 'ymin': 59.0, 'xmax': 429.25, 'ymax': 418.25}
+-------------------------
+| Query: ./data/split/test/4877f7c0-d8ab-11ed-afa1-0242ac120002/Bombay_158.jpg
+|  1:  6ca53dce-50e2-42bd-bbd3-2691cb5afb7e
+|  2:  0ea62894-b8e1-496b-b9c3-e265a6f30b45
+|  3:  6ca53dce-50e2-42bd-bbd3-2691cb5afb7e
+|  4:  c2cfe8cb-125d-476d-bf53-51e470e23a11
+|  5:  f79485c7-eeaf-4c98-bdb6-88c5a964af65
+|  6:  82b1b82e-f870-4d3c-9b20-95410271e9bb
+|  7:  4214ee3f-ee23-4dd6-97e8-85c73c765338
+|  8:  82b1b82e-f870-4d3c-9b20-95410271e9bb
+|  9:  b6acb48d-b367-4f15-8587-fdd009ee9036
+|  10:  a2f39e51-fdf1-45a2-9045-ccc68b478144
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 224.0, 'ymin': 96.0, 'xmax': 800.0, 'ymax': 672.0}
+-------------------------
+| Query: ./data/split/test/2a80f0b2-a66c-48eb-a44a-1c0d74d08960/00000296_014.jpg
+|  1:  c428ae72-d145-47ba-9f92-af2b9bec2af1
+|  2:  3e87c5e3-147f-4b97-a09f-e19d6740de85
+|  3:  615a7ad1-997c-4a88-946d-3b2763cf7680
+|  4:  6e9220ad-0591-4bc4-9fdc-421051d6bd68
+|  5:  ec68d3a8-d8ac-11ed-afa1-0242ac120002
+|  6:  1719a72b-2de8-44ca-a87e-191c867a5abe
+|  7:  7fd4a5b3-5230-47af-8d39-5b74f2e64fd7
+|  8:  3a5b8299-f1f9-49fa-87c7-9ab87ee09c8e
+|  9:  4f0a75c5-fde3-4569-9fcd-9b1dbba1d093
+|  10:  cea22feb-58fc-4ad6-bcad-545a642ee5bb
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 42.0, 'ymin': 46.0, 'xmax': 294.0, 'ymax': 298.0}
+-------------------------
+| Query: ./data/split/test/b9af10c7-04d6-442a-a6ef-538491421013/00000336_003.jpg
+|  1:  2f6441de-2d46-47ad-a096-eca17c438f20
+|  2:  ec68d3a8-d8ac-11ed-afa1-0242ac120002
+|  3:  44279350-c12b-44e6-8464-5f57fc46d427
+|  4:  ec68db00-d8ac-11ed-afa1-0242ac120002
+|  5:  2d17f3b4-69eb-4df9-8eb4-bc0d22f5b8b1
+|  6:  8bcf8dc7-30a3-4fc5-bdb4-b08b01554981
+|  7:  d483ca33-9f1d-45cc-b951-e43a2bda57fc
+|  8:  38c186f4-0e27-41ec-adc4-a4ebfcd824a5
+|  9:  8cf52b80-18ac-4690-8699-0f9affe563f8
+|  10:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 123.0, 'ymin': 41.0, 'xmax': 370.5, 'ymax': 288.5}
+-------------------------
+| Query: ./data/split/test/b9af10c7-04d6-442a-a6ef-538491421013/00000441_010.jpg
+|  1:  50d7c2b1-df69-4d1f-84ec-1cc63d3ecda0
+|  2:  72508932-24b8-4937-8f0d-2e1071ca1c61
+|  3:  246eae21-b8a5-4a13-8c4c-c6195f3c1151
+|  4:  72508932-24b8-4937-8f0d-2e1071ca1c61
+|  5:  2968251d-a010-4007-a997-17261e3aaab1
+|  6:  b53011c6-19f6-438d-bdc3-0a91df54d892
+|  7:  d8402567-9714-497f-9aaa-816c02515fe5
+|  8:  3a29d8c8-f4b6-4926-8608-24d79f3f307e
+|  9:  7bb88c45-c395-42f1-927b-43c4f7d229d9
+|  10:  50d7c2b1-df69-4d1f-84ec-1cc63d3ecda0
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 109.0, 'ymin': 46.0, 'xmax': 390.25, 'ymax': 327.25}
+-------------------------
+| Query: ./data/split/test/66ea0cca-3781-4a82-a855-f6c971a2b34f/Siamese_181.jpg
+|  1:  247cf8a8-2113-4a54-b116-5fb419011e79
+|  2:  3e87c5e3-147f-4b97-a09f-e19d6740de85
+|  3:  af75744a-db95-423f-88e4-d8c125752436
+|  4:  af75744a-db95-423f-88e4-d8c125752436
+|  5:  247cf8a8-2113-4a54-b116-5fb419011e79
+|  6:  f7d5b5a8-155c-4ad9-ae84-071ec9e5edfe
+|  7:  96f12f69-c6bc-46b4-8bd3-2d1d0d48cb8a
+|  8:  3a5b8299-f1f9-49fa-87c7-9ab87ee09c8e
+|  9:  efffc33f-a72d-4f45-8834-a4d4a6590918
+|  10:  371ea28d-4a36-40d3-9589-5a14ed0bd1f0
+-------------------------
+
+Enter image file path (or 'q' to quit): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 125.0, 'ymin': 41.0, 'xmax': 374.75, 'ymax': 290.75}
+-------------------------
+| Query: ./data/split/test/104e41a7-aad6-4781-b671-9aa034b2d9b9/Persian_202.jpg
+|  1:  246eae21-b8a5-4a13-8c4c-c6195f3c1151
+|  2:  3897a4d1-6a43-48a2-a016-771b2f35a943
+|  3:  247cf8a8-2113-4a54-b116-5fb419011e79
+|  4:  edc7fe77-7701-45c8-9482-36541b242c53
+|  5:  22a9a651-8855-407c-8a3e-56793526dd33
+|  6:  44279350-c12b-44e6-8464-5f57fc46d427
+|  7:  4214ee3f-ee23-4dd6-97e8-85c73c765338
+|  8:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+|  9:  2f6441de-2d46-47ad-a096-eca17c438f20
+|  10:  82ae0b34-c5bc-48c5-af15-b8435d6d33cb
+-------------------------
+
+Enter image file path (or 'q' to quit): Done!
