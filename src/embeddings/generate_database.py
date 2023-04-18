@@ -57,7 +57,7 @@ def generate_db(model, loader, save_path=None, device="cpu"):
     
   if save_path:
     if not save_path.endswith(".pth"):
-      out_path = f"{save_path}.pth"
+      save_path = f"{save_path}.pth"
     torch.save(db, save_path)
     print("Database saved!")
     
