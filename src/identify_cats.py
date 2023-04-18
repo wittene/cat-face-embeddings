@@ -10,6 +10,7 @@ Command-line program for identifying cats.
 
 import sys
 import argparse
+from enum import IntEnum
 import os
 import torch
 import torch.nn.functional as F
@@ -19,6 +20,7 @@ import cv2
 import numpy as np
 
 from embeddings.train_embeddings import CatFaceDataset, CatEmbedNN
+from embeddings.database import EmbeddingsDatabase
 
 
 
@@ -26,6 +28,13 @@ from embeddings.train_embeddings import CatFaceDataset, CatEmbedNN
 ####################
 # CLASSES
 ####################
+
+class Modes(IntEnum):
+  """
+  Enum to track program modes.
+  """
+  RETRIEVAL = 1
+  ADDITION = 2
 
 class BoxCoords:
   """
@@ -171,41 +180,71 @@ def main(argv):
    
   to_tensor = transforms.ToTensor()
   image_extensions = [".jpg", ".jpeg", ".png"]
-  while True:
-    # Read in image file path from stdin
-    fp = input("Enter image file path (or 'q' to quit): ")
-    if fp.lower() == 'q':
-      break
-    if not os.path.exists(fp):
-      print(f"File path {fp} does not exist... please try again!")
-      continue
-    # Open the image using PIL
-    try:
-      image = Image.open(fp)
-    except:
-      print(f"Image file path {fp} could not be opened... please try again!")
-      continue
-    # Try to identify cat face bounding box
-    bbox = locate_face(image, face_cascade)
-    if not bbox:
-      print("* Warning: no cat face detected, attempting retrieval anyways...")
-      bbox = get_default_bbox(image)
-    print(f"Estimating face location at: {vars(bbox)}")
-    # Apply pre-processing (CatFaceDataset.resize_with_padding --> toTensor --> add batch dimension)
-    processed_img = to_tensor(CatFaceDataset.resize_with_padding(image, bbox)).to(device).unsqueeze(0)
-    # Pass processed image to model to get embedding --> query
-    query = model(processed_img)
-    # Get matches
-    top_subj = match_k(query, db, k=args.k, device=device)
-    # Output results
-    print("-"*25)
-    print(f"| Query: {fp}")
-    for i, subj in enumerate(top_subj):
-      print(f"|  {i+1}:  {subj}")
-    print("-"*25)
-    print()
   
-  should_save = input("Save any database additions? (Y/N)")
+  # Program loop    
+  while True:
+    
+    # Show main menu
+    print("*"*30)
+    print("* " + "Available program modes".center(26) + " *")
+    print("* " + "-"*26 + " *")
+    for i, mode in enumerate(Modes):
+      print(f"* [{i}]: {mode.name.capitalize(): <21} *")
+    print(f"* [q]: {'Quit program': <21} *")
+    print("*"*30)
+    print()
+    
+    # Prompt for mode
+    mode_input = input("Enter program mode: ")
+    if mode_input.lower() == "q":
+      break
+    if not mode_input.isdigit():
+      print(f"Invalid menu selection: {mode_input}")
+    curr_mode = int(mode_input)
+    
+    # Sub-program loop
+    while True:          
+      # Read in image file path from stdin
+      fp = input("Enter image file path (or 'x' to quit to main menu): ")
+      if fp.lower() == 'x':
+        break
+      if not os.path.exists(fp):
+        print(f"File path {fp} does not exist... please try again!")
+        continue
+      # Open the image using PIL
+      try:
+        image = Image.open(fp)
+      except:
+        print(f"Image file path {fp} could not be opened... please try again!")
+        continue
+      # Try to identify cat face bounding box
+      bbox = locate_face(image, face_cascade)
+      if not bbox:
+        print("* Warning: no cat face detected, attempting retrieval anyways...")
+        bbox = get_default_bbox(image)
+      print(f"Estimating face location at: {vars(bbox)}")
+      # Apply pre-processing (CatFaceDataset.resize_with_padding --> toTensor --> add batch dimension)
+      processed_img = to_tensor(CatFaceDataset.resize_with_padding(image, bbox)).to(device).unsqueeze(0)
+      # Pass processed image to model to get embedding --> query
+      query = model(processed_img)
+      # Action based on mode
+      if curr_mode == Modes.RETRIEVAL:
+        # Get matches
+        top_subj = match_k(query, db, k=args.k, device=device)
+        # Output results
+        print("-"*25)
+        print(f"| Query: {fp}")
+        for i, subj in enumerate(top_subj):
+          print(f"|  {i+1}:  {subj}")
+        print("-"*25)
+        print()
+      if curr_mode == Modes.ADDITION:
+        # Prompt for label
+        label = input("Subject id: ")
+        # Add
+        db.concat(query.unsqueeze(0), [label])
+  
+  should_save = input("Save any database additions? (y/[n]): ")
   if should_save.lower() == "y":
     save_path = input("Enter output file path (.pth file): ")    
     if not save_path.endswith(".pth"):

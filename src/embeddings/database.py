@@ -11,7 +11,6 @@ Utilities to manage a database of embeddings.
 import sys
 import argparse
 import torch
-from train_embeddings import CatEmbedNN, CatFaceDataLoader
 
 
 
@@ -73,7 +72,7 @@ class EmbeddingsDatabase:
       embeddings: tensor of embeddings, shape (entries_size, n_features)
       subjects: subject ids, list of length entries_size
     """
-    self.embeddings = torch.cat(self.embeddings, embeddings)
+    self.embeddings = torch.cat([self.embeddings, embeddings], dim=0)
     self.subjects += subjects
 
     

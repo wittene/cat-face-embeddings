@@ -18,7 +18,12 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from PIL import Image
 
-from database import EmbeddingsDatabase
+# Handle relative imports
+parent_module = sys.modules['.'.join(__name__.split('.')[:-1]) or '__main__']
+if __name__ == '__main__' or parent_module.__name__ == '__main__':
+    from database import EmbeddingsDatabase
+else:
+    from .database import EmbeddingsDatabase
 
 
 

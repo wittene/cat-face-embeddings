@@ -11,8 +11,15 @@ Utilities to generate a database of embeddings.
 import sys
 import argparse
 import torch
-from train_embeddings import CatEmbedNN, CatFaceDataLoader
-from database import generate_db
+
+# Handle relative imports
+parent_module = sys.modules['.'.join(__name__.split('.')[:-1]) or '__main__']
+if __name__ == '__main__' or parent_module.__name__ == '__main__':
+  from train_embeddings import CatEmbedNN, CatFaceDataLoader
+  from database import generate_db
+else:
+  from .train_embeddings import CatEmbedNN, CatFaceDataLoader
+  from .database import generate_db
   
   
 
