@@ -18,6 +18,8 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 from PIL import Image
 
+from database import EmbeddingsDatabase
+
 
 
 
@@ -30,14 +32,14 @@ def visualize_tsne(db, save_path, image_dir=None, annotation_scale=0.01):
   Visualizes t-SNE embeddings with associated images.
   
   Args:
-    db: database dictionary with embeddings and subjects
+    db: EmbeddingsDatabase
     save_path: where to save t-SNE image
     image_dir: if provided, where to search for original images to add annotations
   """
   
   # Get embeddings and subjects
-  embeddings = db["embeddings"].numpy()
-  subjects = db["subjects"]
+  embeddings = db.embeddings.numpy()
+  subjects = db.subjects
 
   # Perform t-SNE to get 2D space
   tsne = TSNE(n_components=2, learning_rate="auto", metric="cosine", init="pca", random_state=42)
@@ -88,7 +90,7 @@ def main(argv):
   Main function.
   Visualize embedding space in 2D.
   
-  Example usage: python visualize_tsne.py "./data/db/train_out_03.pth" "./out_03/tsne.png" --image_dir "./data/split/train"
+  Example usage: python visualize_tsne.py "./db/trained_model.pth" "./trained_model/tsne.png" --image_dir "./data/split/train"
   """
   
   # handle any command line arguments
@@ -102,7 +104,8 @@ def main(argv):
   args = parser.parse_args()
     
   print("Loading database...")
-  db = torch.load(args.db_path, map_location=torch.device("cpu"))
+  db = EmbeddingsDatabase()
+  db.load_dict(torch.load(args.db_path, map_location=torch.device("cpu")))
    
   print("Generating t-SNE visualization...")
   visualize_tsne(db, args.save_path, image_dir=args.image_dir, annotation_scale=args.annotation_scale)

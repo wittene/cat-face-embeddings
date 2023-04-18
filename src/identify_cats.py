@@ -99,15 +99,14 @@ def get_default_bbox(image):
   # Return the bounding box coordinates
   return BoxCoords(xmin, ymin, xmax, ymax)
 
-def match_k(query, embeddings, subjects, k=10, device="cpu"):
+def match_k(query, db, k=10, device="cpu"):
   """
   Find the top-k matches for the query embedding.
   Uses nearest-neighbor classification with cosine similarity.
   
   Args:
     query: query embedding, tensor with shape (1, n_features)
-    embeddings: database of embeddings, tensor with shape (db_size, n_features)
-    subjects: list of subject ids correspond to each database embedding, list of length (db_size)
+    db: database of embeddings
     k: number of top matches to return
   
   Returns:
@@ -115,14 +114,14 @@ def match_k(query, embeddings, subjects, k=10, device="cpu"):
   """
   
   # Compute pairwise cosine similiary scores between query and db embeddings, shape (1, db_size)
-  pairwise_sim = F.cosine_similarity(query.unsqueeze(1), embeddings.unsqueeze(0), dim=2)
+  pairwise_sim = F.cosine_similarity(query.unsqueeze(1), db.embeddings.unsqueeze(0), dim=2)
   
   # Get indices of top k nearest neighbors, shape (1, k)
   _, indices = torch.topk(pairwise_sim, k=k, dim=1)
   indices = indices.to(device)
   
   # Get top-k subject ids
-  top_k = [subjects[i] for i in indices.view([-1])]
+  top_k = [db.subjects[i] for i in indices.view([-1])]
   return top_k
 
 
@@ -137,7 +136,7 @@ def main(argv):
   Main function.
   Interactive command-line program for identifying cat faces.
   
-  Example usage: python identify_cats.py "./out_1/out_11/checkpoint.pth" "./data/db/train_out_11.pth" --k 10 
+  Example usage: python identify_cats.py "./trained_model/checkpoint.pth" "./db/db.pth" --k 10 
   """
   
   # handle any command line arguments
@@ -163,9 +162,9 @@ def main(argv):
     model.load_state_dict(checkpoint["best_model_state_dict"])
     
   print("Loading database...")
-  db = torch.load(args.db_path, map_location=torch.device(device))
-  embeddings = db["embeddings"].to(device)
-  subjects = db["subjects"]  
+  db = EmbeddingsDatabase()
+  db.load_dict(torch.load(args.db_path, map_location=torch.device(device)))
+  db.to(device)
   face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalcatface.xml")
   
   print("Ready!\n")
@@ -197,7 +196,7 @@ def main(argv):
     # Pass processed image to model to get embedding --> query
     query = model(processed_img)
     # Get matches
-    top_subj = match_k(query, embeddings, subjects, k=args.k, device=device)
+    top_subj = match_k(query, db, k=args.k, device=device)
     # Output results
     print("-"*25)
     print(f"| Query: {fp}")
@@ -205,8 +204,16 @@ def main(argv):
       print(f"|  {i+1}:  {subj}")
     print("-"*25)
     print()
-    
   
+  should_save = input("Save any database additions? (Y/N)")
+  if should_save.lower() == "y":
+    save_path = input("Enter output file path (.pth file): ")    
+    if not save_path.endswith(".pth"):
+      save_path = f"{save_path}.pth"
+    torch.save(db.to_dict(), save_path)
+    print("Database saved!")
+  else:
+    print("Discarding changes...")
     
   print("Done!")
 

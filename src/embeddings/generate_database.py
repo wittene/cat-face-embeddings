@@ -12,56 +12,7 @@ import sys
 import argparse
 import torch
 from train_embeddings import CatEmbedNN, CatFaceDataLoader
-
-
-
-
-####################
-# FUNCTIONS
-####################
-
-def generate_db(model, loader, save_path=None, device="cpu"):
-  """
-  Generate a database.
-  
-  Args:
-    model: model to produce embeddings
-    loader: data loader that points to the data to embed
-    save_path: if provided, where to save the database file
-    device: device
-  """
-    
-  # Gather embeddings
-  embeddings = []
-  classids = []
-  model.eval()
-  with torch.no_grad():
-    for X, y in loader:
-      X, y = X.to(device), y.to(device)
-      embd = model(X)
-      embeddings.append(embd)
-      classids.append(y)
-
-  # Merge lists of tensors into single tensor
-  embeddings = torch.cat(embeddings, dim=0)
-  classids = torch.cat(classids, dim=0)
-  
-  # Convert classids to subject ids
-  subjects = [loader.classes[classids[i]] for i in range(classids.size(0))]
-  
-  # Save and return
-  db = {
-    "embeddings": embeddings,
-    "subjects": subjects
-  }
-    
-  if save_path:
-    if not save_path.endswith(".pth"):
-      save_path = f"{save_path}.pth"
-    torch.save(db, save_path)
-    print("Database saved!")
-    
-  return db
+from database import generate_db
   
   
 
@@ -75,7 +26,7 @@ def main(argv):
   Main function.
   Generate and save database of embeddings.
   
-  Example usage: python generate_database.py "./data/split/train" "./data/labels.csv" "./out_03/checkpoint.pth" "./data/db/train_out_03.pth"
+  Example usage: python generate_database.py "./data/split/train" "./data/labels.csv" "./trained_model/checkpoint.pth" "./db/db.pth"
   """
   
   # handle any command line arguments
