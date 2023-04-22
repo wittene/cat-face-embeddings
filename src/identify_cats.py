@@ -169,6 +169,7 @@ def main(argv):
     model.load_state_dict(checkpoint["latest_model_state_dict"])
   else:
     model.load_state_dict(checkpoint["best_model_state_dict"])
+  model.eval()
     
   print("Loading database...")
   db = EmbeddingsDatabase()
