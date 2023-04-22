@@ -1,0 +1,152 @@
+Starting...
+Using device cuda
+Loading checkpoint...
+Initializing embedding model...
+Loading database...
+Ready!
+
+******************************
+*  Available program modes   *
+* -------------------------- *
+* [0]: Retrieval             *
+* [1]: Addition              *
+* [q]: Quit program          *
+******************************
+
+Enter program mode: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+-------------------------
+| Query: ./data/unseen/8246c5bc-1a06-45f1-aedc-effc4ba5e242/20230417_195402.jpg
+|  1:  2f6441de-2d46-47ad-a096-eca17c438f20
+|  2:  4f0a75c5-fde3-4569-9fcd-9b1dbba1d093
+|  3:  3c3bd003-bfa1-44e4-a432-56445a201040
+|  4:  4f0a75c5-fde3-4569-9fcd-9b1dbba1d093
+|  5:  44279350-c12b-44e6-8464-5f57fc46d427
+|  6:  0ea62894-b8e1-496b-b9c3-e265a6f30b45
+|  7:  1622b8c5-519a-49a5-ac7d-1cb46f5c4849
+|  8:  ec68d3a8-d8ac-11ed-afa1-0242ac120002
+|  9:  9ed36f02-5139-4727-936c-8268c8f6c5fb
+|  10:  9243a24f-e7a7-44a4-8348-fe635c3ee897
+-------------------------
+
+Enter image file path (or 'x' to quit to main menu): Estimating face location at: {'xmin': 411.5, 'ymin': 674.0, 'xmax': 944.5, 'ymax': 1207}
+-------------------------
+| Query: ./data/unseen/9720e35a-6a71-45c0-bfab-08ec1ce1e1ee/received_3470036853273771.jpeg
+|  1:  4d6f2013-273e-44cd-83ce-5798d9a79c2d
+|  2:  b414c147-661d-499c-8949-f12514c0bbe2
+|  3:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+|  4:  7828fccb-639e-4cc8-b6db-20df7605fe53
+|  5:  72508932-24b8-4937-8f0d-2e1071ca1c61
+|  6:  c29cc374-dc87-4e75-8fb7-04bb56a7527a
+|  7:  50d7c2b1-df69-4d1f-84ec-1cc63d3ecda0
+|  8:  b256fa12-e663-4372-a40e-433bf7bdab58
+|  9:  31ec98d8-5ae9-4fe9-b2fb-7c35e3f1584e
+|  10:  9df47767-7845-4d8b-a3b2-d45b7dba5825
+-------------------------
+
+Enter image file path (or 'x' to quit to main menu): Estimating face location at: {'xmin': 2640.2, 'ymin': 85.4, 'xmax': 3019.8, 'ymax': 465}
+-------------------------
+| Query: ./data/unseen/ef21aeea-3b66-4d81-896b-024b3cdd0724/20230417_104509.jpg
+|  1:  ec68db00-d8ac-11ed-afa1-0242ac120002
+|  2:  82b1b82e-f870-4d3c-9b20-95410271e9bb
+|  3:  9243a24f-e7a7-44a4-8348-fe635c3ee897
+|  4:  c2cfe8cb-125d-476d-bf53-51e470e23a11
+|  5:  f79485c7-eeaf-4c98-bdb6-88c5a964af65
+|  6:  e48cad1e-66b9-4935-b64a-ad922bed0d96
+|  7:  e418273c-95cf-4dc4-b1e4-590a6d116769
+|  8:  b529644d-0e35-4c08-8449-39e22d05c309
+|  9:  dd891902-71f9-4c06-9ae7-5d43bb2de191
+|  10:  e418273c-95cf-4dc4-b1e4-590a6d116769
+-------------------------
+
+Enter image file path (or 'x' to quit to main menu): ******************************
+*  Available program modes   *
+* -------------------------- *
+* [0]: Retrieval             *
+* [1]: Addition              *
+* [q]: Quit program          *
+******************************
+
+Enter program mode: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 108.0, 'ymin': 560.0, 'xmax': 756.0, 'ymax': 1208.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 135.0, 'ymin': 555.0, 'xmax': 945.0, 'ymax': 1365.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): Estimating face location at: {'xmin': 522.15, 'ymin': 479.3, 'xmax': 910.85, 'ymax': 868}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 441.0, 'ymin': 189.0, 'xmax': 1575.0, 'ymax': 1323.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+Subject id: Enter image file path (or 'x' to quit to main menu): ******************************
+*  Available program modes   *
+* -------------------------- *
+* [0]: Retrieval             *
+* [1]: Addition              *
+* [q]: Quit program          *
+******************************
+
+Enter program mode: Enter image file path (or 'x' to quit to main menu): * Warning: no cat face detected, attempting retrieval anyways...
+Estimating face location at: {'xmin': 1165.0, 'ymin': 283.0, 'xmax': 2866.0, 'ymax': 1984.0}
+-------------------------
+| Query: ./data/unseen/8246c5bc-1a06-45f1-aedc-effc4ba5e242/20230417_195402.jpg
+|  1:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  2:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  3:  ef21aeea-3b66-4d81-896b-024b3cdd0724
+|  4:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  5:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  6:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  7:  ef21aeea-3b66-4d81-896b-024b3cdd0724
+|  8:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  9:  2f6441de-2d46-47ad-a096-eca17c438f20
+|  10:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+-------------------------
+
+Enter image file path (or 'x' to quit to main menu): Estimating face location at: {'xmin': 411.5, 'ymin': 674.0, 'xmax': 944.5, 'ymax': 1207}
+-------------------------
+| Query: ./data/unseen/9720e35a-6a71-45c0-bfab-08ec1ce1e1ee/received_3470036853273771.jpeg
+|  1:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  2:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  3:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  4:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  5:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  6:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  7:  ef21aeea-3b66-4d81-896b-024b3cdd0724
+|  8:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  9:  ef21aeea-3b66-4d81-896b-024b3cdd0724
+|  10:  1ec15a83-18ff-49de-a7fa-37b17d3e1f3d
+-------------------------
+
+Enter image file path (or 'x' to quit to main menu): Estimating face location at: {'xmin': 2640.2, 'ymin': 85.4, 'xmax': 3019.8, 'ymax': 465}
+-------------------------
+| Query: ./data/unseen/ef21aeea-3b66-4d81-896b-024b3cdd0724/20230417_104509.jpg
+|  1:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  2:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  3:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  4:  ef21aeea-3b66-4d81-896b-024b3cdd0724
+|  5:  8246c5bc-1a06-45f1-aedc-effc4ba5e242
+|  6:  ef21aeea-3b66-4d81-896b-024b3cdd0724
+|  7:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  8:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  9:  9720e35a-6a71-45c0-bfab-08ec1ce1e1ee
+|  10:  24b360d2-ffd0-476c-9379-629b92976bf3
+-------------------------
+
+Enter image file path (or 'x' to quit to main menu): ******************************
+*  Available program modes   *
+* -------------------------- *
+* [0]: Retrieval             *
+* [1]: Addition              *
+* [q]: Quit program          *
+******************************
+
+Enter program mode: Save any database additions? (y/[n]): Enter output file path (.pth file): Database saved!
+Done!

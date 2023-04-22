@@ -33,8 +33,8 @@ class Modes(IntEnum):
   """
   Enum to track program modes.
   """
-  RETRIEVAL = 1
-  ADDITION = 2
+  RETRIEVAL = 0
+  ADDITION = 1
 
 class BoxCoords:
   """
@@ -242,7 +242,7 @@ def main(argv):
         # Prompt for label
         label = input("Subject id: ")
         # Add
-        db.concat(query.unsqueeze(0), [label])
+        db.concat(query, [label])
   
   should_save = input("Save any database additions? (y/[n]): ")
   if should_save.lower() == "y":
