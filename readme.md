@@ -2,7 +2,10 @@
 
 **Author: Elizabeth Witten**
 
-This project implements a learned cat face embedding model, with an interactive CLI application to identify cat faces in an image.
+**Project Description**:
+This project implements a deep neural network for learning cat face embeddings, utilizing transfer learning from the pre-trained GoogLeNet model. The proposed model is trained using triplet margin loss to learn a 256-D embedding space where images of the same subject’s face are located close together. Finally, the resulting embedding space is analyzed from two perspectives to identify potential areas for improvement for the task of cat identification. First, the entire space is visualized using the t-SNE algorithm to project it into two dimensions. Second, the trained model is used to create a labeled database of cat face embeddings. A command-line interface (CLI) application is developed to interface with the database, allowing for the addition of new images and performing top-k retrieval for query images of cats.
+
+**Project Presentation**: https://youtu.be/PKsguz6dteM
 
 ---
 
